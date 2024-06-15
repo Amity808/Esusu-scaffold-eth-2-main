@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   10081: {
     Esusu: {
-      address: "0x84FFe69B0c7ae7B8BE10891a6553D459aBf4Da9B",
+      address: "0x4D80104E7e642e5f084030F6Da4e6f2B4f3B97ca",
       abi: [
         {
           inputs: [],
@@ -128,7 +128,7 @@ const deployedContracts = {
             },
             {
               internalType: "bool",
-              name: "isTime",
+              name: "isInitiated",
               type: "bool",
             },
             {
@@ -285,9 +285,63 @@ const deployedContracts = {
           inputs: [
             {
               internalType: "uint256",
-              name: "_target",
+              name: "_savinsLen",
               type: "uint256",
             },
+            {
+              internalType: "address",
+              name: "_owner",
+              type: "address",
+            },
+          ],
+          name: "getSavings",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+            {
+              internalType: "enum Esusu.SavingsStatus",
+              name: "",
+              type: "uint8",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
             {
               internalType: "string",
               name: "_purpose",

@@ -83,6 +83,7 @@ contract Esusu {
     }
 
     function depositChildSavingsReg(uint256 _target, address _father) external payable  {
+        require(msg.sender != _childSavings[msg.sender].childAddress, "Already have an account saving");
         ChildSavings storage savings = _childSavings[msg.sender];
         // uint256 currentTimeStap = block.timestamp;
         // uint256 getPay = currentTimeStap + _age * 365 * 24 * 60 * 60;
@@ -125,7 +126,7 @@ contract Esusu {
         uint256 startDate;
         uint256 endDate;
         string purpose;
-        bool isTime;
+        bool isInitiated;
         bool forceWithdraw;
         bool inSaving;
         SavingsStatus savingStatus;
@@ -135,16 +136,15 @@ contract Esusu {
     mapping  (uint256 => Savings) public  _savings;
     //1717926407
 
-    function initialSaving(uint256 _target, string memory _purpose, uint256 _targetAmount) public {
+    function initialSaving(string memory _purpose, uint256 _targetAmount) public {
         Savings storage save = _savings[savinsLen++];
-        uint256 target = (_target * 24 * 60 * 60);
+        // uint256 target = (_target * 24 * 60 * 60);
         save.owner = payable (msg.sender);
         save.startDate = block.timestamp;
-        save.endDate = block.timestamp + target;
+        // save.endDate = block.timestamp + target;
         save.purpose = _purpose;
-        save.isTime = false;
         save.forceWithdraw = false;
-        save.inSaving = false;
+        save.isInitiated = true;
         save.savingStatus = SavingsStatus.INITIATESAVING;
         save.nonce = savinsLen;
         save.target = _targetAmount;
@@ -174,7 +174,7 @@ contract Esusu {
     function targetReach(uint256 _savinsLen) public {
         require(msg.sender == _savings[_savinsLen].owner, "You dont have account initial withdraw" );
         Savings storage save = _savings[_savinsLen];
-         require(save.target >= save.savingsAmount, "The target must reach before you can withdraw ");
+         require(save.target <= save.savingsAmount, "The target must reach before you can withdraw ");
         uint256 amount = save.target;
 
         (bool sent, ) = payable(save.owner).call{value: amount}("");
@@ -182,6 +182,19 @@ contract Esusu {
         save.target = 0;
         save.savingsAmount = 0;
         save.savingStatus = SavingsStatus.TARGETREACHED;
+    }
+
+    function getSavings(uint256 _savinsLen, address _owner) public  view
+        returns (address, uint256, uint256, string memory, bool, bool, bool, SavingsStatus){
+            require(savinsLen >= _savinsLen, "Inavlid Index");
+        Savings storage save = _savings[_savinsLen];
+        if(_owner == save.owner) {
+            return (
+                save.owner, save.savingsAmount, save.target, save.purpose, save.isInitiated,
+                save.forceWithdraw, save.inSaving, save.savingStatus 
+            );
+        }
+        
     }
     
     function forceWithdraw() public {}

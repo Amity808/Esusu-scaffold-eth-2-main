@@ -32,7 +32,7 @@ const InitialSavings = () => {
 
       await writeContractAsync({
         functionName: "initialSaving",
-        args: [days, purpose, parseEther(targetAmount)],
+        args: [purpose, parseEther(targetAmount)],
       })
      
       handleClear()
@@ -55,32 +55,33 @@ const InitialSavings = () => {
     <h3 className="font-bold text-lg">Secure your future.</h3>
     <p className="py-4">Press ESC key or click the button below to close</p>
     <div className="modal-action flex justify-center items-center">
-      <form method="dialog" >
-        {/* if there is a button in form, it will close the modal */}<div>
+      <form method="dialog" onSubmit={initialSave}>
+        {/* if there is a button in form, it will close the modal */}
+        {/* <div>
           <CustomInput onChange={(e) => setDays(e.target.value)} 
             className=" w-[400px] text-black"
-              placeholders="numbers of days"
+              placeholder="How much do you want to raise"
               type="number"
             />
-          </div>
+          </div> */}
           <div>
           <CustomInput onChange={(e) => setPurpose(e.target.value)} 
             className=" w-[400px] text-black"
-              placeholders="What is the purpose"
+              placeholder="What is the purpose"
               type="text"
             />
           </div>
           <div>
           <CustomInput onChange={(e) => setTargetAmount(e.target.value)} 
             className=" w-[400px] text-black"
-              placeholders="What's your target amount"
+              placeholder="What's your target amount"
               type="number"
             />
           </div>
           <div>
           </div>
           {/* <div className=" flex justify-center"> */}
-          <button className="text-white p-4 bg-blue-500/60 rounded-lg text-lg font-bold w-[100px]" onSubmit={initialSave} disabled={isPending} type="submit">Save</button>
+          <button className="text-white p-4 bg-blue-500/60 rounded-lg text-lg font-bold w-[100px]"   disabled={isPending} type="submit">Save</button>
           {/* </div> */}
         <button className="text-white p-4 bg-blue-500/60 rounded-lg text-lg font-bold w-[100px]">Close</button>
       </form>

@@ -6,10 +6,13 @@ import CustomInput from "./ui/CustomeInput";
 import { toast } from "react-toastify";
 import { parseEther } from "viem";
 import { useAccount } from "wagmi";
+
+
 const Deposit = ({ id }) => {
-  const [Amount, setAmount] = useState("");
+const [Amount, setAmount] = useState("");
 const { address } = useAccount()
-  const { writeContractAsync, isPending } = useScaffoldWriteContract("Esusu");
+
+const { writeContractAsync, isPending } = useScaffoldWriteContract("Esusu");
 
   const handleClear = () => {
     setAmount("");
@@ -21,7 +24,7 @@ const { address } = useAccount()
     e.preventDefault();
     try {
       await writeContractAsync({
-        functionName: "depositForChild",
+        functionName: "depositSave",
         args: [id],
         value: parseEther(Amount),
       });
@@ -42,7 +45,6 @@ const { address } = useAccount()
           <h3 className="font-bold text-lg">Deposit</h3>
           <div className="modal-action flex justify-center items-center">
             <form method="dialog">
-              {/* if there is a button in form, it will close the modal */}
 
               <div>
                 <CustomInput
@@ -53,7 +55,6 @@ const { address } = useAccount()
                 />
               </div>
               <div></div>
-              {/* <div className=" flex justify-center"> */}
               <button
                 className="text-white p-4 bg-blue-500/60 rounded-lg text-lg font-bold w-[100px]"
                 onClick={initialSave}
@@ -62,8 +63,7 @@ const { address } = useAccount()
               >
                 Save
               </button>
-              {/* </div> */}
-              <button className="btn text-white p-4 bg-blue-500/60 rounded-lg text-lg font-bold w-[100px]">
+              <button className=" ml-4 text-white p-4 bg-blue-500/60 rounded-lg text-lg font-bold w-[100px]">
                 Close
               </button>
             </form>

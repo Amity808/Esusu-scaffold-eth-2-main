@@ -23,10 +23,8 @@ const History = () => {
         },
       };
   return (
-    <div style={headerStyle} className=' h-screen'>
-        <div>
-            <Navbar />
-        </div>
+    <div style={headerStyle} className=''>
+        
         <AllTxHistory />
         <HistoryCard id={1} />
     </div>

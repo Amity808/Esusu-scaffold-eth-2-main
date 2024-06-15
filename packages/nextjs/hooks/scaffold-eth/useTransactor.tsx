@@ -78,10 +78,10 @@ export const useTransactor = (_walletClient?: WalletClient): TransactionFunc => 
         <TxnNotification message="Waiting for transaction to complete." blockExplorerLink={blockExplorerTxURL} />,
       );
       
-      const transactionReceipt = await publicClient.waitForTransactionReceipt({
-        hash: transactionHash,
-        confirmations: options?.blockConfirmations,
-      });
+      // const transactionReceipt = await publicClient.waitForTransactionReceipt({
+      //   hash: transactionHash,
+      //   confirmations: options?.blockConfirmations,
+      // });
       notification.remove(notificationId);
 
       notification.success(
@@ -91,7 +91,7 @@ export const useTransactor = (_walletClient?: WalletClient): TransactionFunc => 
         },
       );
 
-      if (options?.onBlockConfirmation) options.onBlockConfirmation(transactionReceipt);
+      // if (options?.onBlockConfirmation) options.onBlockConfirmation(transactionReceipt);
     } catch (error: any) {
       if (notificationId) {
         notification.remove(notificationId);

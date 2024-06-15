@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import CustomInput from "./ui/CustomeInput"
 import { PlaceholdersAndVanishInput } from "./ui/placeholders-and-vanish-input";
 import { toast } from "react-toastify";
-import { useScaffoldReadContract  } from "../hooks/scaffold-eth";
+import { useScaffoldReadContract , useScaffoldWriteContract } from "../hooks/scaffold-eth";
 
 
 //0x25fE59A2a8ed3486EacFba40b963b153bF08cf48

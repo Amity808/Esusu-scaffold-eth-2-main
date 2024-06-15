@@ -7,6 +7,7 @@ import InitialSavings from '../../components/InitialSavings';
 import Deposit from '../../components/Deposit';
 import type { NextPage } from "next";
 
+
 const TargetSavings: NextPage = () => {
     const headerStyle = {
         backgroundImage: `url(${bg.src})`,
@@ -26,10 +27,10 @@ const TargetSavings: NextPage = () => {
       };
   return (
     <div style={headerStyle} className=' h-screen'>
-        <div>
+        <div className=' flex justify-center items-center mt-10'>
             <Navbar />
-        </div>
         <InitialSavings />
+        </div>
         {/* <Deposit /> */}
     </div>
   )

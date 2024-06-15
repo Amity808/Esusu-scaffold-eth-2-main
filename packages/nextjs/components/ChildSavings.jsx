@@ -14,13 +14,13 @@ const ChildSavings = () => {
   const [age, setAge] = useState('')
   const [amount, setAmount] = useState('')
   const [gurdianAddress, setGurdianAddress] = useState('')
-  const isFormFilled = age && amount && gurdianAddress
+  const isFormFilled = amount && gurdianAddress
 
   const { writeContractAsync, isPending } = useScaffoldWriteContract("Esusu")
 
   
   const handleClear = () => {
-    setAge('')
+    // setAge('')
     setAmount('')
     setGurdianAddress('')
   }
@@ -61,7 +61,7 @@ const ChildSavings = () => {
 {/* nnnn */}
     {/* Open the modal using document.getElementById('ID').showModal() method */}
     {/* Open the modal using document.getElementById('ID').showModal() method */}
-<button className="btn" onClick={()=>document.getElementById('my_modal_5').showModal()}>open modal</button>
+<button className="btn" onClick={()=>document.getElementById('my_modal_5').showModal()}>Child savings Initiate</button>
 <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
   <div className="modal-box">
     <h3 className="font-bold text-lg">Secure your child future.</h3>
@@ -69,17 +69,11 @@ const ChildSavings = () => {
     <div className="modal-action flex justify-center items-center">
       <form method="dialog">
         {/* if there is a button in form, it will close the modal */}
-        <div>
-            <CustomInput onChange={(e) => setAge(e.target.value)} 
-            className=" w-[400px] text-black"
-              placeholders="Enter Age"
-              type="number"
-            />
-          </div>
+        
           <div>
             <CustomInput 
             className=" w-[400px] text-black"
-              placeholders={"Amount"}
+              placeholder="Amount"
               onChange={(e) => setAmount(e.target.value)}
               type="number"
             
@@ -88,7 +82,7 @@ const ChildSavings = () => {
           <div>
             <CustomInput 
             className=" w-[400px]"
-              placeholders={"address"}
+              placeholder="Parent walet address"
               type="text"
               onChange={(e) => setGurdianAddress(e.target.value)}
             />

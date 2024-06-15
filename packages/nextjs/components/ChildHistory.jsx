@@ -76,8 +76,8 @@ const ChildHistory = () => {
           </p>
           <div className="rounded-full pl-4 pr-1 py-1 text-white flex items-center space-x-1 bg-black mt-4 text-xs font-bold dark:bg-zinc-800">
             <Link target="_blank" href={'/'}> {readableDate}</Link>
-            <Link target="_blank" href={`/space/`} className="bg-zinc-700 rounded-full text-[0.6rem] px-2 py-0 text-white">
-              With draw Date 
+            <Link target="_blank" href={`/space/deposit`} className="bg-zinc-700 rounded-full text-[0.6rem] px-2 py-0 text-white">
+             Deposit
             </Link>
           </div>
           <div>
@@ -87,7 +87,7 @@ const ChildHistory = () => {
             <button className="mt-4 text-sm text-white bg-black rounded-full px-3 py-1" onClick={withdraw}>Withdraw</button>
           </div>
           <p>b</p>
-          <ChildSaveDeposit address={historyData?.childAddress} />
+          
         </div>
     </div>
   )

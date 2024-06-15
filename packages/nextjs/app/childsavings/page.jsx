@@ -32,9 +32,10 @@ const Childsavings = () => {
         <div>
             <Navbar />
         </div>
+        <div className=' flex jusitify-center item-center'>
         <ChildSavings />
-        <ChildSaveDeposit address={address} />
         <ChildHistory />
+        </div>
     </div>
   )
 }

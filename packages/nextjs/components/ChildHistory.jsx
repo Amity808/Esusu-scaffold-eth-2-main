@@ -4,7 +4,9 @@ import { useScaffoldReadContract, useScaffoldWriteContract } from "../hooks/scaf
 import { useAccount } from 'wagmi';
 import { Address } from "~~/components/scaffold-eth";
 import Link from 'next/link';
+import { formatEther } from 'viem';
 import ChildSaveDeposit from "~~/components/ChildSaveDeposit"
+// import { formatEther } from 'ethers';
 
 const ChildHistory = () => {
 
@@ -61,32 +63,38 @@ const ChildHistory = () => {
   let readableDate = date.toLocaleString()
   console.log("Readable date", readableDate)
 
-  console.log(historyData?.canWithdraw)
+  console.log(historyData?.targetChild)
   
   if (!historyData) return null;
+
+  const currentAmount = historyData?.amount ? formatEther(historyData?.amount.toString()) : 0;
+  const targetInitiate = historyData?.childAge ? formatEther(historyData?.childAge.toString()) : 0;
   return (
     <div>
         <div className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900 m-3">
             <Address address={historyData?.childAddress} />
           <p className="text-base sm:text-xl text-black mt-4 mb-2 dark:text-neutral-200">
-            Current Amount: {historyData?.amount}
+            Current Amount: {currentAmount} ether
           </p>
           <p className="text-sm text-neutral-600 dark:text-neutral-400">
-            Child Target: {historyData?.childAge}
+            Child Target: {targetInitiate} ether
           </p>
-          <div className="rounded-full pl-4 pr-1 py-1 text-white flex items-center space-x-1 bg-black mt-4 text-xs font-bold dark:bg-zinc-800">
-            <Link target="_blank" href={'/'}> {readableDate}</Link>
-            <Link target="_blank" href={`/space/deposit`} className="bg-zinc-700 rounded-full text-[0.6rem] px-2 py-0 text-white">
+          <div>
+            {historyData?.childAge >= historyData?.amount  ? <> 
+
+          <div className="">
+            {/* <Link target="_blank" href={'/'}> {readableDate}</Link> */}
+            <p>You have not reach your target</p>
+            <Link target="_blank" href={`/childsavings/deposit`} className="mt-4 text-sm text-white bg-black rounded-full px-3 py-1">
              Deposit
             </Link>
           </div>
-          <div>
-            {historyData?.targetChild >= historyData?.amount ? <>
-            </> :<><p>You have not reach your target</p></>}
-            <p>End Date: {readableDate}</p>
+            </> :<>
+            <p>You have reach your target</p>
             <button className="mt-4 text-sm text-white bg-black rounded-full px-3 py-1" onClick={withdraw}>Withdraw</button>
+            </>}
+            {/* <p>End Date: {readableDate}</p> */}
           </div>
-          <p>b</p>
           
         </div>
     </div>

@@ -37,7 +37,7 @@ const ChildSavings = () => {
 
   const saveAmount = BigInt(Math.round(amount * 1000000))
 
-  const formatToether = parseEther(saveAmount.toString())
+  const formatToether = parseEther(amount.toString())
 
   console.log(formatToether, "target ")
   const savepromise = async (e) => {
@@ -58,10 +58,8 @@ const ChildSavings = () => {
   return (
     <>
 
-{/* nnnn */}
-    {/* Open the modal using document.getElementById('ID').showModal() method */}
-    {/* Open the modal using document.getElementById('ID').showModal() method */}
-<button className="btn" onClick={()=>document.getElementById('my_modal_5').showModal()}>Child savings Initiate</button>
+
+<button className="btn bg-white text-black" onClick={()=>document.getElementById('my_modal_5').showModal()}>Child savings Initiate</button>
 <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
   <div className="modal-box">
     <h3 className="font-bold text-lg">Secure your child future.</h3>

@@ -70,7 +70,7 @@ contract Esusu {
         // require(!_childSavings[_child].childAddress, "cant withdraw fund because its not child address" );
         
         ChildSavings storage savings = _childSavings[msg.sender];
-        require(savings.targetChild >= savings.amount, "Not yet target");
+        require(savings.amount >= savings.targetChild, "Not yet target");
         uint256 amount = _childSavings[_child].amount;
 
 

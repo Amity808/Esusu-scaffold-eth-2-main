@@ -29,14 +29,13 @@ const Childsavings = () => {
       const { address } = useAccount()
   return (
     <div style={headerStyle} className=' h-screen'>
-        <div>
+        <div className=' flex justify-center items-center mt-10 flex-col'>
             <Navbar />
-        </div>
-        <div className=' flex jusitify-center item-center'>
+     
         <ChildSavings />
         <ChildHistory />
         </div>
-    </div>
+         </div>
   )
 }
 

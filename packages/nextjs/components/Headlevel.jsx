@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-const Header = () => {
+const Headlevel = () => {
   return (
     <div className="pt-10">
       <div className=" flex flex-row max-sm:flex-col items-center justify-around">
@@ -25,4 +25,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Headlevel;

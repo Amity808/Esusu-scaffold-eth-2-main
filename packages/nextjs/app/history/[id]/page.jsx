@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import React, { useCallback, useEffect, useState } from 'react'
-import { useScaffoldReadContract, useScaffoldWriteContract } from "../hooks/scaffold-eth";
+import { useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { Address } from "~~/components/scaffold-eth";
 import { useAccount } from 'wagmi';
 import { formatEther } from 'viem';

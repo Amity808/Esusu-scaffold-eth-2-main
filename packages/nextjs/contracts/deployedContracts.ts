@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   10081: {
     Esusu: {
-      address: "0x4D80104E7e642e5f084030F6Da4e6f2B4f3B97ca",
+      address: "0x1A703018b69cCc42a5270C70949392c72DA55606",
       abi: [
         {
           inputs: [],

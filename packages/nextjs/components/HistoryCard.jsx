@@ -105,13 +105,13 @@ if (address !== historyData?.owner) return null;
         <div className="rounded-[22px] w-[23rem] p-4 sm:p-10 bg-white dark:bg-zinc-900 m-3">
             <Address address={historyData?.owner} />
           <p className="text-base sm:text-xl text-black mt-4 mb-2 dark:text-neutral-200">
-            Current Amount: {currentAmount} XRP
+            Current Amount: {currentAmount} Ether
           </p>
           <p className="text-base sm:text-xl text-black mt-4 mb-2 dark:text-neutral-200">
             Purpose: {historyData?.purpose}
           </p>
           <p className="text-base sm:text-xl text-black mt-4 mb-2 dark:text-neutral-200">
-            Target: {target} XRP
+            Target: {target} Ether
           </p>
           
           <div>
